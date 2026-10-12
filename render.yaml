@@ -1,0 +1,14 @@
+
+services:
+  - type: web
+    name: xinggou-order-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: USER_A_TEST_TOKEN
+        sync: false
+      - key: USER_B_TEST_TOKEN
+        sync: false
